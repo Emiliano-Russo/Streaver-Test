@@ -1,0 +1,22 @@
+.Card {
+	width: 23rem;
+	min-height: 20rem;
+	margin: 2rem;
+	padding: 1rem;
+	border-radius: 10px;
+	color: black;
+	animation: inAnimation 1s;
+	background-color: white;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+@keyframes inAnimation {
+	0% {
+		opacity: 0;
+		visibility: hidden;
+	}
+	100% {
+		opacity: 1;
+		visibility: visible;
+	}
+}

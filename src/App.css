@@ -1,0 +1,24 @@
+html,
+body {
+	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+	background: rgb(89, 66, 242);
+	background: linear-gradient(90deg, rgba(89, 66, 242, 1) 0%, rgba(72, 244, 190, 1) 100%);
+	color: white;
+}
+
+.App {
+	text-align: center;
+}
+
+input {
+	margin: 1rem;
+	padding: 5px 10px;
+}
+
+.container {
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	display: flex;
+	flex-wrap: wrap;
+	background-color: white;
+	text-align: center;
+}
