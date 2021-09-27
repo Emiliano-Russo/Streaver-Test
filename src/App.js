@@ -1,20 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import "./App.css";
 import Card from "./Card/Card";
 const axios = require("axios");
-
-const user = {
-	userId: 10,
-	id: 91,
-	title: "aut amet sed",
-	body: "libero voluptate eveniet aperiam sed\nsunt placeat suscipit molestias\nsimilique fugit nam natus\nexpedita consequatur consequatur dolores quia eos et placeat",
-};
 
 const url = "https://jsonplaceholder.typicode.com/posts";
 const urlUserId = "https://jsonplaceholder.typicode.com/posts?userId=";
 
 function App() {
 	const [users, setUsers] = useState([]);
+	const debounceOnChange = useCallback(debounce(changeHandler, 1000), []);
+	useEffect(() => {
+		fetchData(url);
+	}, []);
+
+	function debounce(func, wait) {
+		let timeout;
+		return function (...args) {
+			const context = this;
+			if (timeout) {
+				clearTimeout(timeout);
+			}
+			timeout = setTimeout(() => {
+				timeout = null;
+				func.apply(context, args);
+			}, wait);
+		};
+	}
 
 	function fetchData(link) {
 		axios
@@ -27,10 +38,6 @@ function App() {
 				alert("Something went wrong!");
 			});
 	}
-
-	useEffect(() => {
-		fetchData(url);
-	}, []);
 
 	function changeHandler(e) {
 		e.preventDefault();
@@ -51,8 +58,8 @@ function App() {
 
 	return (
 		<div className="App">
-			<h1>Insight-Softworks Test</h1>
-			<input placeholder="User Id" type="text" onChange={changeHandler}></input>
+			<h1>Made by Emiliano Russo</h1>
+			<input placeholder="User Id" type="text" onChange={debounceOnChange}></input>
 			<div className="container">{userCards}</div>
 		</div>
 	);
